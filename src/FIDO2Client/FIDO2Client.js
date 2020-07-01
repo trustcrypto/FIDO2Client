@@ -70,7 +70,7 @@ class FIDO2Client {
         /**
          * @type {Modal}
          */
-        this.modal = useDefaultModal ? require('../Modals/Modal').modal : undefined;
+        //this.modal = useDefaultModal ? require('../Modals/Modal').modal : undefined;
     }
 
 
