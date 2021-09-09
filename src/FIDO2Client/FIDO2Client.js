@@ -179,8 +179,8 @@ class FIDO2Client {
                     reject(new CTAP2KeepAliveCancel());
                 });
             }
-        } else if (!pinSet &&
-            (options.userVerification === UserVerificationRequirement.PREFERRED ||
+        } else if ((!pinSet &&
+            (options.userVerification === UserVerificationRequirement.PREFERRED) ||
                 options.userVerification === UserVerificationRequirement.DISCOURAGED)) {
             /**
              * PIN is not set and rely party doesn't need PIN.
