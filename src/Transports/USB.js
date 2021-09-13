@@ -277,17 +277,29 @@ class Device {
  * @returns {Array<HIDDevice>}
  * @constructor
  */
-let GetFIDO2Devices = () => hid.devices().filter(device => (device.product == "ONLYKEY" && device.interface == 1) ||(device.usage === 1) && (device.usagePage === 61904)).map(x => new HIDDevice(
-    x.vendorId,
-    x.productId,
-    x.path,
-    x.serialNumber,
-    x.manufacturer,
-    x.product,
-    x.release,
-    x.usagePage,
-    x.usage
-));
+let GetFIDO2Devices = function(){
+    var dv = hid.devices().sort( function(a,b) {
+        return a.interface - b.interface
+    }).filter(function(device){ 
+        return (device.product == "ONLYKEY" && (device.interface == 1 || device.interface == 2))
+    }).map(function(x){
+        return new HIDDevice(
+            x.vendorId,
+            x.productId,
+            x.path,
+            x.serialNumber,
+            x.manufacturer,
+            x.product,
+            x.release,
+            x.usagePage,
+            x.usage
+        );
+    });
+    var o = [];
+    if(dv[0])
+        o.push(dv[0]);
+    return o;
+};
 
 /**
  *
