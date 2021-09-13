@@ -168,7 +168,7 @@ class Device {
         let currentPayloadOffset = this.maxPacketSize - 7;
         let firstPacket = new InitPacket(this.maxPacketSize, this.cid, cmd, payload.length, firstFrame);
         var b;
-        if(process.env.OS && process.env.OS.toLowerCase().indexOf("window") >= -1)
+        if(process.platform.toLowerCase().indexOf("win") >= -1)
             b = [0].concat(Array.from(firstPacket.toBytes()))
         else b = firstPacket.toBytes();
         this.deviceHandle.write(b);
@@ -179,7 +179,7 @@ class Device {
             currentPayloadOffset += packetSize;
             let nextPacket = new ContPacket(this.cid, this.maxPacketSize, seq, nextFrame);
             var b;
-            if(process.env.OS && process.env.OS.toLowerCase().indexOf("window") >= -1)
+            if(process.platform.toLowerCase().indexOf("win") >= -1)
                 b = [0].concat(Array.from(nextPacket.toBytes()))
             else b = nextPacket.toBytes();
             this.deviceHandle.write(b);
