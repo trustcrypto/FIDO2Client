@@ -18,7 +18,7 @@ class HIDDevice {
      * @param usagePage {Number}
      * @param usage {Number}
      */
-    constructor(vendorId, productId, path, serialNumber, manufacturer, product, release, usagePage, usage) {
+    constructor(vendorId, productId, path, serialNumber, manufacturer, product, release, usagePage, usage, _interface) {
 
         /**
          *
@@ -65,6 +65,11 @@ class HIDDevice {
          * @type {Number}
          */
         this.usage = usage;
+        /**
+         *
+         * @type {Number}
+         */
+        this.interface = _interface;
     }
 
 }
@@ -292,7 +297,8 @@ let GetFIDO2Devices = function(){
             x.product,
             x.release,
             x.usagePage,
-            x.usage
+            x.usage,
+            x.interface
         );
     });
     var o = [];
