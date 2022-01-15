@@ -13,7 +13,7 @@
     "base64url": "^3.0.1",
     "bluebird": "^3.7.2",
     "cbor": "^5.0.2",
-    "node-hid": "^1.2.0"
+    "node-hid": "^2.1.1"
   },
   "devDependencies": {
     "electron": "^8.2.3",
